@@ -12,13 +12,18 @@ function EditTodoForm({ editTodo, id, toggle, taskName }) {
     }
 
     return (
-        <form onSubmit={handleEdit}>
+        <form onSubmit={handleEdit} style={{ marginLeft: "0.7rem", width: "50%" }} >
             <TextField
+                sx={{ marginBottom: "1rem" }}
+                variant="filled"
+                size="small"
                 value={value}
                 onChange={changeVal}
                 margin="normal"
                 label="New name"
                 fullWidth
+                // To write directly in the TextField component
+                autoFocus
             />
         </form>
     )

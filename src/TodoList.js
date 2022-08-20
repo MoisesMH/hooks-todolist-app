@@ -3,7 +3,7 @@ import React from "react";
 import Todo from "./Todo";
 
 function TodoList({ todos, removeTodo, toggleTodo, editTodo }) {
-    const todoList = todos.map(t => (
+    const todoList = todos.map((t,i) => (
         <>
             <Todo
                 task={t.task}
@@ -14,7 +14,8 @@ function TodoList({ todos, removeTodo, toggleTodo, editTodo }) {
                 toggleTodo={toggleTodo}
                 editTodo={editTodo}
             />
-            <Divider />
+            {/* To not display the last divider */}
+            {(i < todos.length - 1) && <Divider />}
         </>
     ))
 

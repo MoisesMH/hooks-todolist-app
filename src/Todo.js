@@ -9,7 +9,7 @@ function Todo({ task, id, completed, removeTodo, toggleTodo, editTodo }) {
     const handleToggle = () => toggleTodo(id)
     const [isEditing, toggleIsEditing] = useToggle(false)
     return (
-        <ListItem>
+        <ListItem sx={{ height: "4rem" }} >
             {isEditing ?
                 <EditTodoForm editTodo={editTodo} id={id} taskName={task} toggle={toggleIsEditing} />
                 :
