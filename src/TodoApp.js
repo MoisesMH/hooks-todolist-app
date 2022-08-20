@@ -1,8 +1,8 @@
 import { Typography, Paper, AppBar, Toolbar, Grid } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
-import { v4 as uuid } from "uuid";
+import useTodoState from "./hooks/useTodoState";
 
 const classes = {
     paper: {
@@ -22,36 +22,13 @@ function TodoApp() {
     //     { id: 3, task: "Grow Beard", completed: false },
     // ]
 
-    const [todos, setTodos] = useState(initTodos)
+    const [todos, addTodo, removeTodo, toggleTodo, editTodo] = useTodoState(initTodos)
 
     // save todos array each time its state changes
     useEffect(() => {
         const stringifiedTodos = JSON.stringify(todos)
         localStorage.setItem("todos", stringifiedTodos)
     }, [todos])
-
-    const addTodo = (newTodoText) => {
-        setTodos([
-            ...todos,
-            { id: uuid(), task: newTodoText, completed: false }
-        ])
-    }
-    const removeTodo = (id) => {
-        const updatedTodos = todos.filter(t => t.id !== id)
-        setTodos(updatedTodos)
-    }
-    const toggleTodo = (id) => {
-        const updatedTodos = todos.map(t => t.id === id ?
-            { ...t, completed: !t.completed} : t
-        )
-        setTodos(updatedTodos)
-    }
-    const editTodo = (id, task) => {
-        const updatedTodos = todos.map(t => t.id === id ?
-            { ...t, task } : t
-        )
-        setTodos(updatedTodos)
-    }
     
     const { paper } = classes
     return (
