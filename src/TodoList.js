@@ -2,7 +2,7 @@ import { Divider, List, Paper } from "@mui/material";
 import React from "react";
 import Todo from "./Todo";
 
-function TodoList({ todos, removeTodo, toggleTodo }) {
+function TodoList({ todos, removeTodo, toggleTodo, editTodo }) {
     const todoList = todos.map(t => (
         <>
             <Todo
@@ -12,6 +12,7 @@ function TodoList({ todos, removeTodo, toggleTodo }) {
                 completed={t.completed}
                 removeTodo={removeTodo}
                 toggleTodo={toggleTodo}
+                editTodo={editTodo}
             />
             <Divider />
         </>

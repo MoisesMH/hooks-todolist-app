@@ -37,6 +37,12 @@ function TodoApp() {
         )
         setTodos(updatedTodos)
     }
+    const editTodo = (id, task) => {
+        const updatedTodos = todos.map(t => t.id === id ?
+            { ...t, task } : t
+        )
+        setTodos(updatedTodos)
+    }
     
     const { paper } = classes
     return (
@@ -49,7 +55,7 @@ function TodoApp() {
             <Grid container justifyContent="center" sx={{ mt: "1rem" }}>
                 <Grid item xs={11} md={8} lg={4} >
                     <TodoForm addTodo={addTodo} />
-                    <TodoList todos={todos} removeTodo={removeTodo} toggleTodo={toggleTodo} />
+                    <TodoList todos={todos} removeTodo={removeTodo} toggleTodo={toggleTodo} editTodo={editTodo} />
                 </Grid>
             </Grid>
         </Paper>
