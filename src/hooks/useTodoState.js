@@ -1,9 +1,9 @@
-import { useState } from "react"
 import { v4 as uuid } from "uuid";
+import useLocalStorageState from "./useLocalStorageState";
 
 // Custom hook for todos
 export default function useTodoState(initTodos) {
-    const [todos, setTodos] = useState(initTodos)
+    const [todos, setTodos] = useLocalStorageState("todos", initTodos)
 
     const addTodo = (newTodoText) => {
         setTodos([
