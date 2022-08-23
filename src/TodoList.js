@@ -1,16 +1,16 @@
 import { Divider, List, Paper } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
+import { TodosContext } from "./context/todos.context";
 import Todo from "./Todo";
 
-function TodoList({ todos, removeTodo, toggleTodo, editTodo }) {
-    const todoList = todos.map((t,i) => (
+// function TodoList({ todos, removeTodo, toggleTodo, editTodo }) {
+function TodoList() {
+    const { todos } = useContext(TodosContext)
+    const todoList = todos && todos.map((t,i) => (
         <>
             <Todo
                 {...t}
                 key={t.id}
-                removeTodo={removeTodo}
-                toggleTodo={toggleTodo}
-                editTodo={editTodo}
             />
             {/* To not display the last divider */}
             {(i < todos.length - 1) && <Divider />}
@@ -19,9 +19,11 @@ function TodoList({ todos, removeTodo, toggleTodo, editTodo }) {
 
     return (
         <Paper>
-            <List>
-                { todoList }
-            </List>
+            {(todos && todos.length > 0) &&
+                <List>
+                    {todoList}
+                </List>
+            }
         </Paper>
     )
 }

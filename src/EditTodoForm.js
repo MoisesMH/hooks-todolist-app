@@ -1,8 +1,10 @@
 import { TextField } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
+import { TodosContext } from "./context/todos.context";
 import useInputState from "./hooks/useInputState";
 
-function EditTodoForm({ editTodo, id, toggle, taskName }) {
+function EditTodoForm({ id, toggle, taskName }) {
+    const { editTodo } = useContext(TodosContext)
     const [value, changeVal, resetVal] = useInputState(taskName)
     const handleEdit = (e) => {
         e.preventDefault()

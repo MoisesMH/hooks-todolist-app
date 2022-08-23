@@ -1,17 +1,20 @@
 import { Checkbox, IconButton, ListItem, ListItemSecondaryAction, ListItemText } from "@mui/material";
 import useToggle from "./hooks/useToggleState";
 import { Delete, Edit } from '@mui/icons-material';
-import React from "react";
+import React, { useContext } from "react";
 import EditTodoForm from "./EditTodoForm";
+import { TodosContext } from "./context/todos.context";
 
-function Todo({ task, id, completed, removeTodo, toggleTodo, editTodo }) {
+function Todo({ task, id, completed }) {
+    const { removeTodo, toggleTodo } = useContext(TodosContext)
     const handleRemove = () => removeTodo(id)
     const handleToggle = () => toggleTodo(id)
     const [isEditing, toggleIsEditing] = useToggle(false)
     return (
         <ListItem sx={{ height: "4rem" }} >
             {isEditing ?
-                <EditTodoForm editTodo={editTodo} id={id} taskName={task} toggle={toggleIsEditing} />
+            // We no longer pass down editTodo as a prop, because we're getting it from the TodosContext
+                <EditTodoForm id={id} taskName={task} toggle={toggleIsEditing} />
                 :
                 <>
                     <Checkbox

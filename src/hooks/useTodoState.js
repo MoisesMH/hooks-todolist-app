@@ -28,11 +28,11 @@ export default function useTodoState(initTodos) {
         setTodos(updatedTodos)
     }
     
-    return [
+    return {
         todos,
         addTodo,
         removeTodo,
         toggleTodo,
         editTodo
-    ]
+    }
 } 
