@@ -1,8 +1,8 @@
-import { useReducer } from "react"
+import useLocalStorageReducer from "./useLocalStorageReducer"
 
 export default function useTodoReducer(reducer, initTodoState) {
     // We start with a piece of state: { todos: initTodos }
-    const [todos, dispatch] = useReducer(reducer, initTodoState)
+    const [todos, dispatch] = useLocalStorageReducer("todos", reducer, initTodoState)
 
     // These are like the actions in Vue.js
     const addTodo = (task) => {

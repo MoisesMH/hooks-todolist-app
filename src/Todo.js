@@ -10,7 +10,6 @@ function Todo({ task, id, completed }) {
     const handleRemove = () => removeTodo(id)
     const handleToggle = () => toggleTodo(id)
     const [isEditing, toggleIsEditing] = useToggle(false)
-    console.log("TODO RE-RENDER: ", task)
     return (
         <ListItem sx={{ height: "4rem" }} >
             {isEditing ?
