@@ -6,7 +6,7 @@ import Todo from "./Todo";
 // function TodoList({ todos, removeTodo, toggleTodo, editTodo }) {
 function TodoList() {
     const { todos } = useContext(TodosContext)
-    const todoList = todos && todos.map((t,i) => (
+    const todoList = (todos && todos.length > 0) && todos.map((t,i) => (
         <>
             <Todo
                 {...t}

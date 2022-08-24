@@ -3,10 +3,10 @@ import useToggle from "./hooks/useToggleState";
 import { Delete, Edit } from '@mui/icons-material';
 import React, { useContext } from "react";
 import EditTodoForm from "./EditTodoForm";
-import { TodosContext } from "./context/todos.context";
+import { ActionsContext } from "./context/todos.context";
 
 function Todo({ task, id, completed }) {
-    const { removeTodo, toggleTodo } = useContext(TodosContext)
+    const { removeTodo, toggleTodo } = useContext(ActionsContext)
     const handleRemove = () => removeTodo(id)
     const handleToggle = () => toggleTodo(id)
     const [isEditing, toggleIsEditing] = useToggle(false)

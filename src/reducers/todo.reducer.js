@@ -1,4 +1,3 @@
-import { useReducer } from "react"
 import { v4 as uuid } from "uuid"
 
 // Action is the payload to apply to the state
@@ -37,32 +36,4 @@ const reducer = ({ todos }, { type, payload }) => {
     }
 }
 
-export default function useTodoReducer(initTodos) {
-    // We start with a piece of state: { todos: initTodos }
-    const [state, dispatch] = useReducer(reducer, { todos: initTodos })
-
-    // These are like the actions in Vue.js
-    const addTodo = (task) => {
-        dispatch({ type: "addTodo", payload: { task } })
-    }
-    
-    const removeTodo = (id) => {
-        dispatch({ type: "removeTodo", payload: { id } })
-    }
-    
-    const toggleTodo = (id) => {
-        dispatch({ type: "toggleTodo", payload: { id } })
-    }
-    
-    const editTodo = (id, task) => {
-        dispatch({ type: "editTodo", payload: { id, task } })
-    }
-
-    return {
-        todos: state.todos,
-        addTodo,
-        removeTodo,
-        toggleTodo,
-        editTodo
-    }
-}
+export default reducer
