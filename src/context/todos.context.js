@@ -1,5 +1,6 @@
 import React, { createContext } from "react";
-import useTodoState from "../hooks/useTodoState";
+// import useTodoState from "../hooks/useTodoState";
+import useTodoReducer from "../reducers/todo.reducer";
 
 const defaultTodos = [
     { id: 1, task: "Mow the lawn using goars", completed: false },
@@ -19,7 +20,8 @@ export const TodosContext = createContext()
 
 export function TodosProvider({ children }) {
     // const [todos, addTodo, removeTodo, toggleTodo, editTodo] = useTodoState(defaultTodos)
-    const TodosStuff = useTodoState(defaultTodos)
+    // const TodosStuff = useTodoState(defaultTodos)
+    const TodosStuff = useTodoReducer(defaultTodos)
     return (
         // spreading because with useTodoState returns is an array, and we want an object
         // So we spread and wrap the values and functions in an object
