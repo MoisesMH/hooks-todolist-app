@@ -1,7 +1,7 @@
 import { Checkbox, IconButton, ListItem, ListItemSecondaryAction, ListItemText } from "@mui/material";
 import useToggle from "./hooks/useToggleState";
 import { Delete, Edit } from '@mui/icons-material';
-import React, { useContext } from "react";
+import React, { memo, useContext } from "react";
 import EditTodoForm from "./EditTodoForm";
 import { ActionsContext } from "./context/todos.context";
 
@@ -10,6 +10,7 @@ function Todo({ task, id, completed }) {
     const handleRemove = () => removeTodo(id)
     const handleToggle = () => toggleTodo(id)
     const [isEditing, toggleIsEditing] = useToggle(false)
+    console.log("TODO RE-RENDER: ", task)
     return (
         <ListItem sx={{ height: "4rem" }} >
             {isEditing ?
@@ -41,4 +42,4 @@ function Todo({ task, id, completed }) {
     )
 }
 
-export default Todo
+export default memo(Todo)
