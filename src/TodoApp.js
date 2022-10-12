@@ -35,7 +35,7 @@ function TodoApp() {
         <Paper sx={paper} elevation={0}>
             <AppBar color="primary" position="static" sx={{ height: "64px" }}>
                 <Toolbar>
-                    <Typography color="inherit">Todos with Hooks</Typography>
+                    <Typography color="inherit">Todos with Hooks v2</Typography>
                 </Toolbar>
             </AppBar>
             <Grid container justifyContent="center" sx={{ mt: "1rem" }}>
