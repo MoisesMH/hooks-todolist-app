@@ -120,9 +120,9 @@ stages:
           - task: AzureRmWebAppDeployment@4
             inputs:
               ConnectionType: 'AzureRM'
-              azureSubscription: $(azureSubscription)
+              azureSubscription: 'Azure for Students(0c9ccb5a-239a-4bc1-ba6d-cfaf10231094)'
               appType: 'webAppLinux'
-              WebAppName: '$(webAppName)'
+              WebAppName: 'todolistapp1'
               packageForLinux: '$(Pipeline.Workspace)/$(Build.BuildId).zip'
               RuntimeStack: 'NODE|16-lts'
               StartupCommand: 'npm install -g serve && serve -s'
