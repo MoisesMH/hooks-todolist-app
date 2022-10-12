@@ -10,7 +10,7 @@ trigger:
 
 variables:
   # Azure Resource Manager connection created during pipeline creation
-  azureSubscription: '0c9ccb5a-239a-4bc1-ba6d-cfaf10231094'
+  azureSubscription: 'Azure for Students(0c9ccb5a-239a-4bc1-ba6d-cfaf10231094)'
 
   # Web app name
   webAppName: 'todolistapp1'
@@ -120,9 +120,9 @@ stages:
           - task: AzureRmWebAppDeployment@4
             inputs:
               ConnectionType: 'AzureRM'
-              azureSubscription: 'Azure for Students(0c9ccb5a-239a-4bc1-ba6d-cfaf10231094)'
+              azureSubscription: $(azureSubscription)
               appType: 'webAppLinux'
-              WebAppName: 'todolistapp1'
+              WebAppName: $(webAppName)
               packageForLinux: '$(Pipeline.Workspace)/$(Build.BuildId).zip'
               RuntimeStack: 'NODE|16-lts'
               StartupCommand: 'npm install -g serve && serve -s'
